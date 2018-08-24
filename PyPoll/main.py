@@ -35,3 +35,18 @@ for key in candidate_pool:
 print('----------------------')
 winner = max(candidate_pool, key=candidate_pool.get)
 print(f'Winner is: {winner}')
+
+output_path = os.path.join('Resources','summary.txt')
+
+summary = open(output_path, 'w')
+summary.write('```text\n')
+summary.write('Election Results!\n')
+summary.write('------------------\n')
+summary.write(f'Total Votes: {total_votes}\n')
+summary.write('------------------\n')
+for key in candidate_pool:
+    summary.write(f'{key}: {round((candidate_pool[key]/total_votes)*100,2)}% ({candidate_pool[key]})\n')
+summary.write('------------------\n')
+summary.write(f'Winner is: {winner}\n')
+summary.write('````')
+summary.close()
